@@ -7,9 +7,15 @@ JetpackCompose Note
 - [元素](#元素)
 - [修饰符](#修饰符)
 
+compose version: 1.0.0-alpha08
+
 setContent: 定義Layout佈局
 
-compose version: 1.0.0-alpha08
+Surface
+
+ExercisejetpackComposeTheme
+
+
 
 ## 註解
 
@@ -62,6 +68,12 @@ Image: ImageView
 | colorFilter |  |
 
 > * 為必要之參數
+
+## Button
+
+Button
+
+IconButton
 
 ## Spacer
 
