@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -22,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -45,18 +44,26 @@ fun Button() {
     val text = remember { mutableStateOf("") }
     val context = LocalContext.current
 
-    Column {
+    Column(Modifier.padding(8.dp)) {
+        Row {
+            Button(
+                onClick = { text.value = "btn clicked." },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
+                    contentColor = Color.Red,
+                )
+            ) {
+                Text(text = "Btn")
+            }
 
-        Button(
-            onClick = { text.value = "btn clicked." },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.White,
-                contentColor = Color.Red,
+            ClickableText(
+                text = AnnotatedString("Click Me"),
+                modifier = Modifier.padding(10.dp),
+                onClick = {
+                    text.value = "text clicked."
+                }
             )
-        ) {
-            Text(text = "Btn")
         }
-
 
         Row(Modifier.fillMaxWidth()) {
             IconBtn(Icons.Filled.Favorite, iconBtnModifier, Color.Black) {

@@ -55,6 +55,12 @@ Text: TextView
 
 > * 為必要之參數
 
+ClickableText: 可以點擊Text
+
+Button
+
+IconButton: 含有圖片Button
+
 Image: ImageView
 
 | 參數 | 說明 |
@@ -69,11 +75,7 @@ Image: ImageView
 
 > * 為必要之參數
 
-## Button
 
-Button
-
-IconButton
 
 ## Spacer
 
