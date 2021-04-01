@@ -9,10 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Button
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Lock
@@ -51,9 +48,15 @@ fun Button() {
     Column {
 
         Button(
-            onClick = { text.value = "btn clicked." }) {
+            onClick = { text.value = "btn clicked." },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.White,
+                contentColor = Color.Red,
+            )
+        ) {
             Text(text = "Btn")
         }
+
 
         Row(Modifier.fillMaxWidth()) {
             IconBtn(Icons.Filled.Favorite, iconBtnModifier, Color.Black) {
