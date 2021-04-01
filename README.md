@@ -101,7 +101,10 @@ Image: ImageView
 
 ### padding
 
-| --- | --- | | padding | | | absolutePadding | |
+| 函數 | 說明 |
+| --- | --- |
+| padding | |
+| absolutePadding | |
 
 ## REFERENCE
 
