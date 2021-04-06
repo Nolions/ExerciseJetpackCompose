@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExercisejetpackCompose">
-
+        <activity
+            android:name=".ConstraintLayoutActivity"
+            android:exported="true"
+            android:label="@string/title_activity_constraint_layout"
+            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar"></activity>
         <activity
             android:name=".ScaffoldActivity"
             android:exported="true"
@@ -17,16 +21,15 @@
             android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ButtonTestActivity"
             android:exported="true"
             android:label="@string/title_activity_test"
             android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
