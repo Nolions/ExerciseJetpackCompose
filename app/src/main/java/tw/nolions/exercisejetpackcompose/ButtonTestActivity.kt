@@ -45,7 +45,6 @@ fun Button() {
     val text = remember { mutableStateOf("") }
     val context = LocalContext.current
 
-
     Column(
         modifier = Modifier
             .padding(8.dp)
@@ -57,23 +56,27 @@ fun Button() {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            Button(
-                onClick = { text.value = "btn clicked." },
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.White,
-                    contentColor = Color.Red,
-                )
-            ) {
-                Text(text = "Btn")
+            Box(modifier = Modifier.weight(1f)) {
+                Button(
+                    onClick = { text.value = "btn clicked." },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.White,
+                        contentColor = Color.Red,
+                    )
+                ) {
+                    Text(text = "Btn")
+                }
             }
 
-            ClickableText(
-                text = AnnotatedString("Click Me"),
-                modifier = Modifier.padding(10.dp),
-                onClick = {
-                    text.value = "text clicked."
-                }
-            )
+            Box(modifier = Modifier.weight(2f)) {
+                ClickableText(
+                    text = AnnotatedString("Click Me"),
+                    modifier = Modifier.padding(10.dp),
+                    onClick = {
+                        text.value = "text clicked."
+                    }
+                )
+            }
         }
 
         Spacer(
