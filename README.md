@@ -29,8 +29,26 @@ ExercisejetpackComposeTheme
 | 函數 | 說明 |
 | --- | --- |
 | Column | 縱向排列 |
-| Rox | 橫向排列 |
+| Row | 橫向排列 |
 | Box | 重疊(後面元素疊至前面元素之上) |
+
+### align
+
+Column
+
+| 函數 | 說明 |
+| --- | --- |
+| verticalArrangement | 垂直排列 |
+| horizontalAlignment | 水平對齊 |
+
+Row
+
+| 函數 | 說明 |
+| --- | --- |
+| verticalAlignment | 垂直對齊 |
+| horizontalArrangement | 水平排列 |
+
+> 要設置Layout Align時需要設定layout size(寬高)
 
 ## 元素
 

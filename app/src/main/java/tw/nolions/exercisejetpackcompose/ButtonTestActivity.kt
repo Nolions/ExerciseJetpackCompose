@@ -16,6 +16,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -44,8 +45,18 @@ fun Button() {
     val text = remember { mutableStateOf("") }
     val context = LocalContext.current
 
-    Column(Modifier.padding(8.dp)) {
-        Row {
+
+    Column(
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
             Button(
                 onClick = { text.value = "btn clicked." },
                 colors = ButtonDefaults.buttonColors(
@@ -65,7 +76,16 @@ fun Button() {
             )
         }
 
-        Row(Modifier.fillMaxWidth()) {
+        Spacer(
+            modifier = Modifier
+                .height(50.dp)
+                .fillMaxWidth()
+        )
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
             IconBtn(Icons.Filled.Favorite, iconBtnModifier, Color.Black) {
                 text.value = "Favorite clicked."
                 toastAlert(context, text.value)
@@ -81,19 +101,23 @@ fun Button() {
                 toastAlert(context, text.value)
             }
 
-            IconBtn(Icons.Filled.Search, iconBtnModifier, Color.Yellow) {
+            IconBtn(Icons.Filled.Search, iconBtnModifier, Color.Green) {
                 text.value = "Search clicked."
-
                 toastAlert(context, text.value)
             }
         }
+
+        Spacer(
+            modifier = Modifier
+                .height(50.dp)
+                .fillMaxWidth()
+        )
 
         Text(
             text = text.value,
             fontWeight = FontWeight.Bold,
             fontSize = 25.sp,
         )
-
     }
 }
 
