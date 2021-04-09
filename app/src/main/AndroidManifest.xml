@@ -10,10 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExercisejetpackCompose">
         <activity
+            android:name=".ListActivity"
+            android:exported="true"
+            android:label="@string/title_activity_list"
+            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ConstraintLayoutActivity"
             android:exported="true"
             android:label="@string/title_activity_constraint_layout"
-            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar"></activity>
+            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar" />
         <activity
             android:name=".ScaffoldActivity"
             android:exported="true"

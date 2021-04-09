@@ -86,7 +86,6 @@ linkTo()
 
 parent
 
-
 > 要設置Layout Align時需要設定layout size(寬高)
 
 ## 元素
@@ -98,15 +97,15 @@ Text: TextView
 | *text | 文字內容 |
 | modifier ||
 | color ||
-| fontSize ||
-| fontStyle ||
-| fontWeight ||
+| fontSize | 字型大小|
+| fontStyle | 字型 |
+| fontWeight | 字型寬度 |
 | letterSpacing ||
 | textDecoration ||
-| textAlign ||
-| overflow ||
+| textAlign | 對齊 |
+| overflow | 文字溢出 |
 | softWrap ||
-| maxLines ||
+| maxLines | 多大行數|
 | onTextLayout ||
 | style ||
 
@@ -138,6 +137,62 @@ Image: ImageView
 | --- | --- |
 | *modifier | 墊片 |
 
+## List
+
+| 函數 | 說明 |
+| --- | --- |
+| LazyColumn | 垂直方向列表 |
+| LazyRow | 水平方向列表 |
+
+item: List列表下單一項目
+
+items
+
+### LazyListState 
+
+取得目前 List位置
+
+rememberLazyListState(): 用來記憶List中狀態，並用以指像List中的`state`
+
+```
+    val listState = rememberLazyListState()
+    
+    LazyColumn(state = listState) {
+        Log.d(TAG, "LazyListState: index: ${listState.firstVisibleItemIndex}")
+    }
+```
+
+移動到指定List指定位置
+
+animateScrollToItem(): 將List移項指定位置
+
+rememberCoroutineScope(): animateScrollToItem()需要CoroutineScope中才能執行
+
+```
+val listState = rememberLazyListState()
+val coroutineScope = rememberCoroutineScope()
+
+LazyColumn(state = listState) {
+    ...
+}
+
+Button(
+    onClick = {
+        coroutineScope.launch {
+            listState.animateScrollToItem(index = 0)
+        }
+    }
+) {
+    Text(text = "Top")
+}
+```
+
+rememberLazyListState
+
+rememberCoroutineScope
+
+> item元素中可搭配[Layout](#Layout)，以實現複雜UI Layout
+
 ## 修饰符 Modifier
 
 ### size 大小寬高
@@ -145,8 +200,8 @@ Image: ImageView
 | 函數 | 說明 |
 | --- | --- |
 | width | 寬度 |
-| height | 高度 | 
-| size |  | 
+| height | 高度 |
+| size |  |
 | widthIn |  |
 | heightIn |  |
 | requiredWidth |  |
