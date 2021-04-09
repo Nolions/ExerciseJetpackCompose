@@ -294,3 +294,5 @@ rememberCoroutineScope
 1. [Jetpack Compose Basics](https://developer.android.com/jetpack/compose/tutorial)
 
 2. [androidx.compose.ui doc](https://developer.android.com/reference/kotlin/androidx/compose/ui/package-summary)
+
+3. [Jetpack Compose Playground](https://foso.github.io/Jetpack-Compose-Playground/)
