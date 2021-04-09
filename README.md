@@ -32,7 +32,6 @@ ExercisejetpackComposeTheme
 | Scaffold | 基于槽位的布 | 
 | ConstraintLayout | 約束佈局 |
 
-
 ### Column & Row align
 
 Column
@@ -90,13 +89,13 @@ parent
 
 ## 元素
 
-Text: TextView
+### Text: TextView
 
 | 參數 | 說明 |
 | --- | --- |
 | *text | 文字內容 |
 | modifier ||
-| color ||
+| color | 字體顏色|
 | fontSize | 字型大小|
 | fontStyle | 字型 |
 | fontWeight | 字型寬度 |
@@ -111,9 +110,69 @@ Text: TextView
 
 > * 為必要之參數
 
-ClickableText: 可以點擊Text
+Select
 
-Button
+SelectionContainer: 可以選擇並反白區域、DisableSelection：不可以選擇反白
+
+```
+SelectionContainer {
+    Column() {
+        Text("Number: 1")
+        Text("Number: 2")
+        DisableSelection {
+            Text("TNumber: 3")
+            Text("TNumber: 4")
+        }
+        Text("Number: 5")
+        Text("Number: 6")
+    }
+}
+```
+
+click
+
+ClickableText
+
+```
+ClickableText(
+    text = AnnotatedString("Click Me"),
+    onClick = {
+        text.value = "text clicked."
+    }
+)
+```
+
+Input&Modify
+
+TextField: EditText
+
+```
+var text = remember { mutableStateOf("Hello") }
+
+TextField(
+    value = text.value,
+    onValueChange = { text = it },
+    label = { Text("Label") }
+)
+
+Text(text = text.value)
+```
+
+TextField: 帶有Border的EditText
+
+```
+var text = remember { mutableStateOf("Hello") }
+
+OutlinedTextField(
+    value = text.value,
+    onValueChange = { text = it },
+    label = { Text("Label") }
+)
+
+Text(text = text.value)
+```
+
+### Button
 
 IconButton: 含有圖片Button
 
@@ -148,7 +207,7 @@ item: List列表下單一項目
 
 items
 
-### LazyListState 
+### LazyListState
 
 取得目前 List位置
 
