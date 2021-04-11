@@ -6,14 +6,12 @@ JetpackCompose Note
 - [Layout](#layout)
 - [元素](#元素)
 - [修饰符](#修饰符)
+- [Other](#Other)
+- [Reference](#REFERENCE)
 
 compose version: 1.0.0-alpha08
 
 setContent: 定義Layout佈局
-
-Surface
-
-ExercisejetpackComposeTheme
 
 ## 註解
 
@@ -289,10 +287,16 @@ rememberCoroutineScope
 | padding | |
 | absolutePadding | |
 
+## Other
+
+Surface
+
+ExercisejetpackComposeTheme
+
 ## REFERENCE
 
 1. [Jetpack Compose Basics](https://developer.android.com/jetpack/compose/tutorial)
 
-2. [androidx.compose.ui doc](https://developer.android.com/reference/kotlin/androidx/compose/ui/package-summary)
+2. [Jetpack Compose doc](https://developer.android.com/jetpack/compose/documentation)
 
 3. [Jetpack Compose Playground](https://foso.github.io/Jetpack-Compose-Playground/)
