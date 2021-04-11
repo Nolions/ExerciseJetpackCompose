@@ -6,8 +6,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -21,7 +21,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.PopupProperties
 
 class ToolbarActivity : ComponentActivity() {
     val TAG = "ToolbarActivity"
@@ -38,25 +37,31 @@ class ToolbarActivity : ComponentActivity() {
 
 @Composable
 fun Toolbar() {
-    TopAppBar(
-        navigationIcon = {
-            IconButton(onClick = { /*TODO*/ }) {
-                Icon(
-                    imageVector = Icons.Default.Home,
-                    contentDescription = null
+    Column {
+        TopAppBar(
+            navigationIcon = {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        imageVector = Icons.Default.Home,
+                        contentDescription = null
+                    )
+                }
+            },
+            title = {
+                Text(
+                    text = stringResource(R.string.app_name),
                 )
-            }
-        },
-        title = {
-            Text(
-                text = stringResource(R.string.app_name),
-            )
-        },
-        actions = { ActionMenu() },
-        backgroundColor = Color.Green,
-        contentColor = Color.White,
-        elevation = 0.dp
-    )
+            },
+            actions = { ActionMenu() },
+            backgroundColor = Color.Green,
+            contentColor = Color.White,
+            elevation = 0.dp
+        )
+
+        Spacer(Modifier.height(30.dp))
+
+        LinearProgress()
+    }
 }
 
 @Composable
@@ -123,6 +128,57 @@ private fun DropdownMenuItems() {
         Icon(Icons.Filled.ExitToApp, contentDescription = null)
         Text(text = "ExitToApp")
     }
+}
+
+@Composable
+private fun LinearProgress() {
+    var progress = remember { mutableStateOf(0f) }
+    val animatedProgress = animateFloatAsState(
+        targetValue = progress.value,
+        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
+    ).value
+
+    LinearProgressIndicator(
+        modifier = Modifier.padding(8.dp),
+        color = Color.Green,
+        backgroundColor = Color.Red
+    )
+
+    Row(modifier = Modifier.padding(10.dp, 0.dp)) {
+        OutlinedButton(
+            onClick = {
+                if (progress.value > 0f) progress.value -= 0.1f
+            }
+        ) {
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowLeft,
+                contentDescription = null
+            )
+        }
+
+        LinearProgressIndicator(
+            progress = animatedProgress,
+            modifier = Modifier.padding(10.dp, 20.dp)
+        )
+
+        OutlinedButton(
+            onClick = {
+                if (progress.value < 1f) progress.value += 0.1f
+            }
+        ) {
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowRight,
+                contentDescription = null
+            )
+        }
+    }
+
+    Spacer(Modifier.height(30.dp))
+
+    Text(
+        text = "${progress.value.toString()}%",
+        modifier = Modifier.padding(10.dp, 0.dp)
+    )
 }
 
 fun alert(context: Context, text: String) {
