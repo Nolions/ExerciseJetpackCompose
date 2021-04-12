@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -78,6 +78,32 @@ fun Button() {
                 )
             }
 
+            val checkedState = remember { mutableStateOf(true) }
+            Switch(
+                checked = checkedState.value,
+                onCheckedChange = { checkedState.value = it },
+                modifier = Modifier.size(30.dp, 10.dp),
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = Color.Blue,
+                    checkedTrackColor = Color.Gray,
+                    uncheckedThumbColor = Color.Magenta,
+                    uncheckedTrackColor = Color.Transparent
+                )
+            )
+
+            Text(text = checkedState.value.toString())
+        }
+
+        Spacer(
+            modifier = Modifier
+                .height(50.dp)
+                .fillMaxWidth()
+        )
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
             FloatingActionButton(
                 onClick = { /*TODO*/ },
                 shape = MaterialTheme.shapes.small
@@ -94,8 +120,6 @@ fun Button() {
             ) {
                 Text("Clear")
             }
-
-            val state = remember { MutableInteractionSource() }
 
             ExtendedFloatingActionButton(
                 icon = { Icon(Icons.Filled.Favorite, "") },
@@ -148,6 +172,50 @@ fun Button() {
             text = text.value,
             fontWeight = FontWeight.Bold,
             fontSize = 25.sp,
+        )
+    }
+
+    RadioButtonDemo()
+}
+
+@Composable
+fun RadioButtonDemo() {
+    val radioOptions = listOf("A", "B", "C")
+    val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[0]) }
+
+    Column {
+        Row {
+        radioOptions.forEach { text ->
+            Row(
+                Modifier
+                    .selectable(
+                        selected = (text == selectedOption),
+                        onClick = {
+                            onOptionSelected(text)
+                        }
+                    )
+            ) {
+                RadioButton(
+                    selected = (text == selectedOption),
+                    onClick = { onOptionSelected(text) },
+                    colors = RadioButtonDefaults.colors(
+                        selectedColor = Color.Cyan,
+                        unselectedColor = Color.Magenta
+                    )
+                )
+
+                Text(
+                    text = text,
+                    style = MaterialTheme.typography.body1.merge(),
+                    modifier = Modifier.padding(start = 4.dp, end = 8.dp)
+                )
+            }
+
+        }
+        }
+
+        Text(
+            text = selectedOption
         )
     }
 }

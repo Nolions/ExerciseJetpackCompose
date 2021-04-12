@@ -96,3 +96,27 @@ ExtendedFloatingActionButton(
 ```
 
 ## Switch Button
+
+### param
+
+| 函數 | 說明 | Type|
+| --- | --- | --- |
+| checked | 預設狀態 | Boolean |
+| onCheckedChange | 狀態變更後的行為 | lambda |
+| colors | 顏色 | SwitchColors |
+| enabled | 啟用 | Boolean |
+| interactionSource |  | MutableInteractionSource | 
+| modifier | 元素修饰符 | Modifier |
+
+### Use
+
+```
+val checkedState = remember { mutableStateOf(true) }
+
+Switch(
+    checked = checkedState.value,
+    onCheckedChange = { checkedState.value = it }
+)
+
+Text(text = checkedState.value.toString())
+```
