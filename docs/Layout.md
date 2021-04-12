@@ -5,7 +5,7 @@
 | Column | 縱向排列 |
 | Row | 橫向排列 |
 | Box | 重疊(後面元素疊至前面元素之上) |
-| Scaffold | 基于槽位的布 | 
+| Scaffold | 基于槽位的布 |
 | ConstraintLayout | 約束佈局 |
 
 ## Column & Row

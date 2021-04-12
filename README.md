@@ -22,82 +22,11 @@ setContent: 定義Layout佈局
 
 ## 元素
 
-
-Image: ImageView
-
-| 參數 | 說明 |
-| --- | --- |
-| *painter |  |
-| *contentDescription |  |
-| modifier |  |
-| alignment |  |
-| contentScale |  |
-| alpha |  |
-| colorFilter |  |
-
-> * 為必要之參數
-
 ## Spacer
 
 | 參數 | 說明 |
 | --- | --- |
 | *modifier | 墊片 |
-
-## List
-
-| 函數 | 說明 |
-| --- | --- |
-| LazyColumn | 垂直方向列表 |
-| LazyRow | 水平方向列表 |
-
-item: List列表下單一項目
-
-items
-
-### LazyListState
-
-取得目前 List位置
-
-rememberLazyListState(): 用來記憶List中狀態，並用以指像List中的`state`
-
-```
-    val listState = rememberLazyListState()
-    
-    LazyColumn(state = listState) {
-        Log.d(TAG, "LazyListState: index: ${listState.firstVisibleItemIndex}")
-    }
-```
-
-移動到指定List指定位置
-
-animateScrollToItem(): 將List移項指定位置
-
-rememberCoroutineScope(): animateScrollToItem()需要CoroutineScope中才能執行
-
-```
-val listState = rememberLazyListState()
-val coroutineScope = rememberCoroutineScope()
-
-LazyColumn(state = listState) {
-    ...
-}
-
-Button(
-    onClick = {
-        coroutineScope.launch {
-            listState.animateScrollToItem(index = 0)
-        }
-    }
-) {
-    Text(text = "Top")
-}
-```
-
-rememberLazyListState
-
-rememberCoroutineScope
-
-> item元素中可搭配[Layout](#Layout)，以實現複雜UI Layout
 
 ## 修饰符 Modifier
 
