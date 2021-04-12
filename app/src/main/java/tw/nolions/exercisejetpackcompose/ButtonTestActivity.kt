@@ -5,14 +5,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -62,7 +60,9 @@ fun Button() {
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.White,
                         contentColor = Color.Red,
-                    )
+                    ),
+                    enabled = true,
+                    contentPadding = PaddingValues(0.dp)
                 ) {
                     Text(text = "Btn")
                 }
@@ -77,6 +77,34 @@ fun Button() {
                     }
                 )
             }
+
+            FloatingActionButton(
+                onClick = { /*TODO*/ },
+                shape = MaterialTheme.shapes.small
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Clear,
+                    contentDescription = null
+                )
+            }
+
+            FloatingActionButton(
+                onClick = { /*TODO*/ },
+                shape = MaterialTheme.shapes.medium,
+            ) {
+                Text("Clear")
+            }
+
+            val state = remember { MutableInteractionSource() }
+
+            ExtendedFloatingActionButton(
+                icon = { Icon(Icons.Filled.Favorite, "") },
+                text = { Text("Clear") },
+                onClick = { /*do something*/ },
+                backgroundColor = Color.Blue,
+                contentColor = Color.White,
+                shape = MaterialTheme.shapes.large,
+            )
         }
 
         Spacer(
