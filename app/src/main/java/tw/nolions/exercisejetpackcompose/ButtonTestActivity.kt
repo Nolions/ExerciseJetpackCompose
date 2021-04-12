@@ -173,9 +173,11 @@ fun Button() {
             fontWeight = FontWeight.Bold,
             fontSize = 25.sp,
         )
-    }
 
-    RadioButtonDemo()
+        RadioButtonDemo()
+
+        CheckBoxDemo()
+    }
 }
 
 @Composable
@@ -185,37 +187,89 @@ fun RadioButtonDemo() {
 
     Column {
         Row {
-        radioOptions.forEach { text ->
-            Row(
-                Modifier
-                    .selectable(
+            radioOptions.forEach { text ->
+                Row(
+                    Modifier
+                        .selectable(
+                            selected = (text == selectedOption),
+                            onClick = {
+                                onOptionSelected(text)
+                            }
+                        )
+                ) {
+                    RadioButton(
                         selected = (text == selectedOption),
-                        onClick = {
-                            onOptionSelected(text)
-                        }
+                        onClick = { onOptionSelected(text) },
+                        colors = RadioButtonDefaults.colors(
+                            selectedColor = Color.Cyan,
+                            unselectedColor = Color.Magenta
+                        )
                     )
-            ) {
-                RadioButton(
-                    selected = (text == selectedOption),
-                    onClick = { onOptionSelected(text) },
-                    colors = RadioButtonDefaults.colors(
-                        selectedColor = Color.Cyan,
-                        unselectedColor = Color.Magenta
-                    )
-                )
 
-                Text(
-                    text = text,
-                    style = MaterialTheme.typography.body1.merge(),
-                    modifier = Modifier.padding(start = 4.dp, end = 8.dp)
-                )
+                    Text(
+                        text = text,
+                        style = MaterialTheme.typography.body1.merge(),
+                        modifier = Modifier.padding(start = 4.dp, end = 8.dp)
+                    )
+                }
+
             }
-
-        }
         }
 
         Text(
             text = selectedOption
+        )
+    }
+}
+
+@Composable
+fun CheckBoxDemo() {
+    val checkOptions = listOf("A", "B", "C")
+    val checked = ArrayList<Boolean>()
+    checked.add(false)
+    checked.add(false)
+    checked.add(false)
+
+    val optionsChecked = remember { mutableStateOf(checked) }
+
+    Column {
+        Row {
+            checkOptions.forEachIndexed { index, text ->
+                val checkedState = remember { mutableStateOf(optionsChecked.value[index]) }
+                Row(
+                    Modifier
+                        .selectable(
+                            selected = checkedState.value,
+                            onClick = {
+                                checkedState.value = !checkedState.value
+                                optionsChecked.value[index] = checkedState.value
+                            }
+                        )
+                ) {
+                    Checkbox(
+                        checked = checkedState.value,
+                        onCheckedChange = {
+                            checkedState.value = it
+                            optionsChecked.value[index] = it
+                        },
+                        colors = CheckboxDefaults.colors(
+                            checkmarkColor = Color.White,
+                            checkedColor = Color.Red,
+                            uncheckedColor = Color.Blue,
+                        )
+                    )
+
+                    Text(
+                        text = text,
+                        style = MaterialTheme.typography.body1.merge(),
+                        modifier = Modifier.padding(start = 4.dp, end = 8.dp)
+                    )
+                }
+            }
+        }
+
+        Text(
+            text = "Checked:${optionsChecked.value.toString()}"
         )
     }
 }
