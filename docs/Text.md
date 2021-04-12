@@ -19,6 +19,8 @@
 | onTextLayout | |  |
 | style | |  |
 
+> * 為必要之參數
+
 ## use
 
 ## Select & Focus
