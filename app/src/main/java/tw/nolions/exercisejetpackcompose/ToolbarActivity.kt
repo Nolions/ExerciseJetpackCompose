@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -16,8 +18,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
@@ -29,7 +37,6 @@ class ToolbarActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-
             Toolbar()
         }
     }
@@ -61,6 +68,31 @@ fun Toolbar() {
         Spacer(Modifier.height(30.dp))
 
         LinearProgress()
+
+        Card(
+            border = BorderStroke(10.dp, Color.Red),
+            modifier = Modifier.fillMaxWidth().padding(15.dp)
+        ) {
+            Column {
+                Image(
+                    painter = painterResource(R.drawable.power),
+                    contentDescription = null,
+                    modifier = Modifier.height(180.dp).width(180.dp),
+                    contentScale = ContentScale.Crop
+                )
+
+                Text(
+                    buildAnnotatedString {
+                        append("welcome to ")
+                        withStyle(
+                            style = SpanStyle(fontWeight = FontWeight.W900, color = Color(0xFF4552B8))
+                        ) {
+                            append("Jetpack Compose Playground")
+                        }
+                    }
+                )
+            }
+        }
     }
 }
 
