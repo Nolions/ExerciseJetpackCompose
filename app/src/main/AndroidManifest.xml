@@ -10,21 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExercisejetpackCompose">
         <activity
-            android:name=".ToolbarActivity"
-            android:exported="true"
-            android:label="@string/title_activity_topbar"
-            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".ListActivity"
             android:exported="true"
             android:label="@string/title_activity_list"
-            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar"></activity>
+            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar" />
         <activity
             android:name=".ConstraintLayoutActivity"
             android:exported="true"
@@ -34,7 +23,13 @@
             android:name=".ScaffoldActivity"
             android:exported="true"
             android:label="@string/title_activity_scaffold"
-            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar" />
+            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ButtonTestActivity"
             android:exported="true"
@@ -44,8 +39,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar" />
     </application>
 
 </manifest>

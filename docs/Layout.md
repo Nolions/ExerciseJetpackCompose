@@ -72,9 +72,9 @@ Row(
 | content | body Content |
 | contentColor |  |
 | snackbarHost |  |
-| floatingActionButton | floatingActionButton位置，預設為`FabPosition.End` |
-| floatingActionButtonPosition |  |
-| isFloatingActionButtonDocked |  |
+| floatingActionButton | floatingActionButton設置 |
+| floatingActionButtonPosition | floatingActionButton位置，預設為`FabPosition.End` |
+| isFloatingActionButtonDocked | FloatingActionButton是為位於bottomBar一半高度位置 |
 | drawerContent |  |
 | drawerGesturesEnabled | 透過手勢來開關drawer，預設為true |
 | drawerShape | drawer樣式 |
