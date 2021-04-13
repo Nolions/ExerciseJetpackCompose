@@ -1,23 +1,27 @@
-# Text
+# Text Label
+
+Label元件: Text
 
 ## param
 
 | 參數 | 說明 | 型態 |
 | --- | --- | --- |
 | *text | 文字內容 |  |
-| modifier |  |  |
-| color | 字體顏色 |  |
-| fontSize | 字型大小 |  |
-| fontStyle | 字型 |  |
-| fontWeight | 字型寬度 |  |
-| letterSpacing |  |  |
-| textDecoration | |  |
-| textAlign | 對齊 |  |
-| overflow | 文字溢出 |  |
-| softWrap | |  |
-| maxLines | 多大行數|  |
+| modifier | 元素修飾符 | Modifier |
+| color | 字體顏色 | Color |
+| fontSize | 字型大小 | TextUnit |
+| fontStyle | 字型 | FontStyle? |
+| fontWeight | 字型寬度 | FontWeight? |
+| fontFamily | 字型寬度 | FontFamily? |
+| letterSpacing |  | TextUnit |
+| textDecoration | | TextDecoration? |
+| textAlign | 對齊 | TextAlign? |
+| lineHeight |  | TextUnit |
+| overflow | 文字溢出 | TextOverflow |
+| softWrap | | Boolean |
+| maxLines | 多大行數| Int |
 | onTextLayout | |  |
-| style | |  |
+| style | 風格樣式 | TextStyle |
 
 > * 為必要之參數
 
@@ -25,9 +29,9 @@
 
 ## Select & Focus
 
-### SelectionContainer
+SelectionContainer: 可以選取反白區域
 
-### DisableSelection
+DisableSelection: 選取反白區域中無法被選取區域
 
 ### Use
 
@@ -48,7 +52,20 @@ SelectionContainer {
 
 ## Click
 
-ClickableText
+可以點擊的Text元件: ClickableText
+
+### param
+
+| 參數 | 說明 | 型態 |
+| --- | --- | --- |
+| *text | 文字內容 |  |
+| modifier | 元素修飾符 | Modifier |
+| softWrap |  | Boolean |
+| overflow | 文字溢出 | TextOverflow |
+| maxLines | 多大行數 | Int |
+| onClick | 點擊後的行為 | lambda |
+| onTextLayout | |  |
+| style | 樣式風格 | TextStyle |
 
 ### Use
 
