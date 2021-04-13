@@ -24,15 +24,17 @@ compose version: 1.0.0-alpha08
 
 ## 佈局
 
-[Column](./docs/layout.md#Column)
+https://github.com/Nolions/ExerciseJetpackCompose/blob/master/docs/layout.md#Scaffold
 
-[Rox](./docs/layout.md#Row)
+[Column](./docs/Layout.md#Column)
 
-[Box](./docs/layout.md#Box)
+[Rox](./docs/Layout.md#Row)
 
-[Scaffold](./docs/layout.md#Scaffold)
+[Box](./docs/Layout.md#Box)
 
-[ConstraintLayout](./docs/layout.md#ConstraintLayout)
+[Scaffold](./docs/Layout.md#Scaffold)
+
+[ConstraintLayout](./docs/Layout.md#ConstraintLayout)
 
 ## 元素
 
