@@ -24,7 +24,15 @@ compose version: 1.0.0-alpha08
 
 ## 佈局
 
-[layout](./docs/layout.md)
+[Column](./docs/layout.md#Column)
+
+[Rox](./docs/layout.md#Row)
+
+[Box](./docs/layout.md#Box)
+
+[Scaffold](./docs/layout.md#Scaffold)
+
+[ConstraintLayout](./docs/layout.md#ConstraintLayout)
 
 ## 元素
 
@@ -36,11 +44,15 @@ compose version: 1.0.0-alpha08
 
 [DropdownMenu](./docs/DropdownMenu.md)
 
-[CheckBox&RadioButton](./docs/CheckBox&RadioButton.md)
+[CheckBox](./docs/CheckBox&RadioButton.md#RadioButton#CheckBox)
+
+[RadioButton](./docs/CheckBox&RadioButton.md#RadioButton)
 
 [ProgressIndicator](./docs/ProgressIndicator.md)
 
-[ToolBar](./docs/Toolbar.md)
+[TopBar](./docs/Toolbar.md#Topbar)
+
+[BottomBar](./docs/Toolbar.md#BottomBar)
 
 Slider
 

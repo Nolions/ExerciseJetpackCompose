@@ -1,8 +1,8 @@
-# TopAppBar
+# ToolBar
 
-toolbar
+## TopBar
 
-## TopAppBar
+TopAppBar
 
 ### param
 
@@ -18,7 +18,7 @@ toolbar
 
 ![alt 属性文本](./assets/toolbar_block.png)
 
-## use
+### use
 
 ```
 TopAppBar(
@@ -41,3 +41,7 @@ TopAppBar(
     elevation = 0.dp
 )
 ```
+
+## BottomBar
+
+BottomAppBar
