@@ -1,12 +1,8 @@
 # DropdownMenu
 
-下拉式示選單
+下拉式示選單: DropdownMenu
 
-## DropdownMenu
-
-下拉示選單
-
-### param
+## param
 
 | 函數 | 說明 | Type|
 | --- | --- | --- |
