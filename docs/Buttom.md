@@ -1,5 +1,7 @@
 # Button
 
+按鈕元件: Button
+
 ## param
 
 | 函數 | 說明 | Type|
@@ -12,8 +14,8 @@
 | colors | 背景＆內文顏色 | ButtonColors |
 | contentPadding | Padding | PaddingValues |
 | elevation | 陰影高度 | ButtonElevation |
-| content |  | @Composable lambda | 
-| modifier | 元素修饰符 | Modifier |
+| content |  | @Composable lambda |
+| modifier | 元素修飾符 | Modifier |
 
 ## use
 
@@ -27,9 +29,21 @@ Button(
 }
 ```
 
-## Icon
+## Icon Button
 
-IconButton: 含有圖片Button
+ 含有Icon的Button: IconButton
+
+### param
+
+| 函數 | 說明 | Type|
+| --- | --- | --- |
+| onClick | 點擊後的行為 | lambda，default:null |
+| enabled | 啟用 | Boolean，default:true |
+| interactionSource |  | MutableInteractionSource |
+| content |  | @Composable lambda |
+| modifier | 元素修飾符 | Modifier |
+
+### Use
 
 ```
 IconButton(onClick = { /*TODO*/ }) {
@@ -40,9 +54,11 @@ IconButton(onClick = { /*TODO*/ }) {
 }
 ```
 
-## Floating Action Button
+## 懸浮按鈕
 
 ### FloatingActionButton
+
+浮動按鈕
 
 #### param
 
@@ -54,26 +70,10 @@ IconButton(onClick = { /*TODO*/ }) {
 | backgroundColor | 背景顏色 | Color |
 | contentColor | 內容物(EX: Text, Icon)顏色 | Color |
 | elevation | 陰影 | FloatingActionButtonElevation |
-| content |  | @Composable lambda | 
-| modifier | 元素修饰符 | Modifier |
+| content |  | @Composable lambda |
+| modifier | 元素修飾符 | Modifier |
 
-### ExtendedFloatingActionButton
-
-#### param
-
-| 函數 | 說明 | Type|
-| --- | --- | --- |
-| text | 文字內容 | lambda |
-| icon | Icon | lambda |
-| onClick | 點擊後的行為 | lambda，default:null |
-| interactionSource |  | MutableInteractionSource |
-| shape | 形狀 | Shape |
-| backgroundColor | 背景顏色 | Color |
-| contentColor | 內容物(EX: Text, Icon)顏色 | Color |
-| elevation | 陰影 | ButtonElevation |
-| modifier | 元素修饰符 | Modifier |
-
-### Use
+#### Use
 
 ```
 FloatingActionButton(onClick = { /*TODO*/ }) {
@@ -87,6 +87,25 @@ FloatingActionButton(onClick = { /*TODO*/ }) {
     Text(text = "Clear")
 }
 
+### ExtendedFloatingActionButton
+
+擴充的FloatingActionButton，同時可設定Icon與Text
+
+#### param
+
+| 函數 | 說明 | Type|
+| --- | --- | --- |
+| text | 文字內容 | lambda |
+| icon | Icon | lambda |
+| onClick | 點擊後的行為 | lambda，default:null |
+| interactionSource |  | MutableInteractionSource |
+| shape | 形狀 | Shape |
+| backgroundColor | 背景顏色 | Color |
+| contentColor | 內容物(EX: Text, Icon)顏色 | Color |
+| elevation | 陰影 | ButtonElevation |
+| modifier | 元素修飾符 | Modifier |
+
+```
 ExtendedFloatingActionButton(
     icon = { Icon(Icons.Filled.Favorite, "") },
     text = { Text("Clear") },
@@ -95,7 +114,9 @@ ExtendedFloatingActionButton(
 )
 ```
 
-## Switch Button
+## 開關Switch(Toggle Button)
+
+開關按鈕: switch
 
 ### param
 
@@ -106,7 +127,7 @@ ExtendedFloatingActionButton(
 | colors | 顏色 | SwitchColors |
 | enabled | 啟用 | Boolean |
 | interactionSource |  | MutableInteractionSource | 
-| modifier | 元素修饰符 | Modifier |
+| modifier | 元素修飾符 | Modifier |
 
 ### Use
 
