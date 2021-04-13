@@ -5,4 +5,5 @@
     <string name="title_activity_constraint_layout">ConstraintLayoutActivity</string>
     <string name="title_activity_list">ListActivity</string>
     <string name="title_activity_topbar">Topbar</string>
+    <string name="title_activity_modal_drawer_layout">ModalDrawerLayoutActivity</string>
 </resources>
