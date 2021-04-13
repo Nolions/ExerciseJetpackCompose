@@ -2,16 +2,18 @@
 
 JetpackCompose Note
 
+- [Setting](#Setting)
 - [註解](#註解)
-- [Layout](#layout)
+- [佈局](#佈局)
 - [元素](#元素)
-- [修饰符](#修饰符)
-- [Other](#Other)
+- [修飾符](#修飾符)
 - [Reference](#REFERENCE)
+
+# Setting
 
 compose version: 1.0.0-alpha08
 
-setContent: 定義Layout佈局
+<!-- setContent: 定義Layout佈局 -->
 
 ## 註解
 
@@ -20,56 +22,45 @@ setContent: 定義Layout佈局
 | @Composable | 定義為可組合函數 |
 | @Preview | 允許為即時預覽 |
 
+## 佈局
+
+[layout](./docs/layout.md)
+
 ## 元素
 
-## Spacer
+[Text](./docs/Text.md)
+
+[Button](./docs/Button.md)
+
+[Image](./docs/Image.md)
+
+[DropdownMenu](./docs/DropdownMenu.md)
+
+[CheckBox&RadioButton](./docs/CheckBox&RadioButton.md)
+
+[ProgressIndicator](./docs/ProgressIndicator.md)
+
+[ToolBar](./docs/Toolbar.md)
+
+Slider
+
+Dialog
+
+Snackbar
+
+<!-- ## Spacer
 
 | 參數 | 說明 |
 | --- | --- |
-| *modifier | 墊片 |
+| *modifier | 墊片 | -->
 
-## 修饰符 Modifier
+## 修飾符
 
-### size 大小寬高
+[Modifier](./docs/Modifier.md)
 
-| 函數 | 說明 |
-| --- | --- |
-| width | 寬度 |
-| height | 高度 |
-| size |  |
-| widthIn |  |
-| heightIn |  |
-| requiredWidth |  |
-| requiredHeight |  |
-| requiredSize |  |
-| requiredWidthIn |  |
-| defaultMinSize |  |
-| wrapContentWidth | 根據內容寬度來設定元素寬度 |
-| wrapContentHeight | 根據內容寬度來設定元素高度 |
-| wrapContentSize | wrapContentWidth + wrapContentHeight |
-| fillMaxWidth | 指定寬度與上層Layout一樣 |
-| fillMaxHeight | 指定高度與上層Layout一樣 |
-| fillMaxSize | fillMaxWidth + fillMaxHeight |
+<!-- Surface -->
 
-### offer 偏移量
-
-| 函數 | 說明 |
-| --- | --- |
-| offset |  |
-| absoluteOffset |  |
-
-### padding
-
-| 函數 | 說明 |
-| --- | --- |
-| padding | |
-| absolutePadding | |
-
-## Other
-
-Surface
-
-ExercisejetpackComposeTheme
+<!-- ExercisejetpackComposeTheme -->
 
 ## REFERENCE
 
