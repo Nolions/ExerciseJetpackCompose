@@ -24,8 +24,6 @@ compose version: 1.0.0-alpha08
 
 ## 佈局
 
-https://github.com/Nolions/ExerciseJetpackCompose/blob/master/docs/layout.md#Scaffold
-
 [Column](./docs/Layout.md#Column)
 
 [Rox](./docs/Layout.md#Row)
