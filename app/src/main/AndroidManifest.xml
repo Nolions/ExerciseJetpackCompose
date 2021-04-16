@@ -24,10 +24,11 @@
             android:exported="true"
             android:label="@string/title_activity_constraint_layout"
             android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar" />
+
         <activity
-            android:name=".ScaffoldActivity"
+            android:name=".ToolbarActivity"
             android:exported="true"
-            android:label="@string/title_activity_scaffold"
+            android:label="@string/title_activity_topbar"
             android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

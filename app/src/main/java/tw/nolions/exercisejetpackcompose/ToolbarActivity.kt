@@ -14,6 +14,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -67,17 +68,21 @@ fun Toolbar() {
 
         Spacer(Modifier.height(30.dp))
 
-        LinearProgress()
+        progress()
 
         Card(
             border = BorderStroke(10.dp, Color.Red),
-            modifier = Modifier.fillMaxWidth().padding(15.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(15.dp)
         ) {
             Column {
                 Image(
                     painter = painterResource(R.drawable.power),
                     contentDescription = null,
-                    modifier = Modifier.height(180.dp).width(180.dp),
+                    modifier = Modifier
+                        .height(180.dp)
+                        .width(180.dp),
                     contentScale = ContentScale.Crop
                 )
 
@@ -85,13 +90,83 @@ fun Toolbar() {
                     buildAnnotatedString {
                         append("welcome to ")
                         withStyle(
-                            style = SpanStyle(fontWeight = FontWeight.W900, color = Color(0xFF4552B8))
+                            style = SpanStyle(
+                                fontWeight = FontWeight.W900,
+                                color = Color(0xFF4552B8)
+                            )
                         ) {
                             append("Jetpack Compose Playground")
                         }
                     }
                 )
             }
+        }
+    }
+}
+
+lateinit var sliderPosition: MutableState<Float>
+
+@Composable
+fun progress() {
+    sliderPosition = remember { mutableStateOf(0f) }
+    LinearProgress()
+    Slider()
+
+    Text(text = sliderPosition.value.toInt().toString())
+}
+
+@Composable
+private fun Slider() {
+    Slider(
+        value = sliderPosition.value,
+        onValueChange = {
+            sliderPosition.value = it
+        },
+        valueRange = 0F..10F,
+        steps = 10,
+        colors = SliderDefaults.colors()
+    )
+}
+
+@Composable
+private fun LinearProgress() {
+    val animatedProgress = animateFloatAsState(
+        targetValue = sliderPosition.value / 10,
+        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
+    ).value
+
+    LinearProgressIndicator(
+        modifier = Modifier.padding(8.dp),
+        color = Color.Green,
+        backgroundColor = Color.Red
+    )
+
+    Row(modifier = Modifier.padding(10.dp, 0.dp)) {
+        OutlinedButton(
+            onClick = {
+                if (sliderPosition.value > 0f) sliderPosition.value -= 0.1f * 10
+            }
+        ) {
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowLeft,
+                contentDescription = null
+            )
+        }
+
+        LinearProgressIndicator(
+            progress = animatedProgress,
+            modifier = Modifier.padding(10.dp, 20.dp),
+        )
+
+        OutlinedButton(
+            onClick = {
+                if (sliderPosition.value < 1f) sliderPosition.value += 0.1f * 10
+            }
+        ) {
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowRight,
+                contentDescription = null
+            )
         }
     }
 }
@@ -160,57 +235,6 @@ private fun DropdownMenuItems() {
         Icon(Icons.Filled.ExitToApp, contentDescription = null)
         Text(text = "ExitToApp")
     }
-}
-
-@Composable
-private fun LinearProgress() {
-    var progress = remember { mutableStateOf(0f) }
-    val animatedProgress = animateFloatAsState(
-        targetValue = progress.value,
-        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
-    ).value
-
-    LinearProgressIndicator(
-        modifier = Modifier.padding(8.dp),
-        color = Color.Green,
-        backgroundColor = Color.Red
-    )
-
-    Row(modifier = Modifier.padding(10.dp, 0.dp)) {
-        OutlinedButton(
-            onClick = {
-                if (progress.value > 0f) progress.value -= 0.1f
-            }
-        ) {
-            Icon(
-                imageVector = Icons.Default.KeyboardArrowLeft,
-                contentDescription = null
-            )
-        }
-
-        LinearProgressIndicator(
-            progress = animatedProgress,
-            modifier = Modifier.padding(10.dp, 20.dp)
-        )
-
-        OutlinedButton(
-            onClick = {
-                if (progress.value < 1f) progress.value += 0.1f
-            }
-        ) {
-            Icon(
-                imageVector = Icons.Default.KeyboardArrowRight,
-                contentDescription = null
-            )
-        }
-    }
-
-    Spacer(Modifier.height(30.dp))
-
-    Text(
-        text = "${progress.value.toString()}%",
-        modifier = Modifier.padding(10.dp, 0.dp)
-    )
 }
 
 fun alert(context: Context, text: String) {

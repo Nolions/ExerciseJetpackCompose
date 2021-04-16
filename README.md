@@ -56,7 +56,9 @@ compose version: 1.0.0-alpha08
 
 [BottomBar](./docs/Toolbar.md#BottomBar)
 
-Slider
+[Slider](./docs/Slider&ProgressIndicator.md)
+
+[ProgressIndicator](./docs/Slider&ProgressIndicator.md#ProgressIndicator)
 
 Dialog
 
