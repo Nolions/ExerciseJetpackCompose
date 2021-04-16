@@ -60,7 +60,7 @@ Slider
 
 Dialog
 
-Snackbar
+[Snackbar](./docs/Snackbar.md)
 
 <!-- ## Spacer
 
