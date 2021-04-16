@@ -6,12 +6,11 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,6 +18,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 class ScaffoldActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,10 +30,27 @@ class ScaffoldActivity : ComponentActivity() {
     }
 }
 
+lateinit var snackbarHostState: MutableState<SnackbarHostState>
+lateinit var coroutineScope: CoroutineScope
+
+fun onClick() {
+    coroutineScope.launch {
+        snackbarHostState.value.showSnackbar(
+            message = "Hey look a snackbar",
+            actionLabel = "Hide",
+            duration = SnackbarDuration.Long
+        )
+    }
+}
+
 @Composable
 fun HomeScreen() {
     val context = LocalContext.current
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
+
+    snackbarHostState = remember { mutableStateOf(SnackbarHostState()) }
+    coroutineScope = rememberCoroutineScope()
+
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = { BuildTopBar() },
@@ -45,6 +63,29 @@ fun HomeScreen() {
         floatingActionButton = { BuildBloatingActionButton(context) },
         floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = true,
+        snackbarHost = { SnackBar() }
+    )
+}
+
+@Composable
+fun SnackBar() {
+    SnackbarHost(
+        hostState = snackbarHostState.value,
+        snackbar = {
+            Snackbar(
+                action = {
+//                    TextButton(
+//                        onClick = { snackbarHostState.value.currentSnackbarData?.dismiss() }
+//                    ) {
+//                        Text(text = "Hide")
+//                    }
+                    Text(text = "Hide")
+                }, actionOnNewLine = true,
+
+            ) {
+                Text("hey look a snackbar")
+            }
+        }
     )
 }
 
@@ -70,6 +111,7 @@ fun BuildBloatingActionButton(context: Context) {
         backgroundColor = MaterialTheme.colors.primary,
         onClick = {
             Toast.makeText(context, "test", Toast.LENGTH_LONG).show()
+            onClick()
         }
     ) {
         Icon(
