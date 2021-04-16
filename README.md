@@ -40,7 +40,7 @@ compose version: 1.0.0-alpha08
 
 [Text](./docs/Text.md)
 
-[Button](./docs/Button.md)
+[Button](docs/Button.md)
 
 [Image](./docs/Image.md)
 
