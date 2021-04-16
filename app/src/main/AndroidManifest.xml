@@ -13,13 +13,7 @@
             android:name=".ModalDrawerActivity"
             android:exported="true"
             android:label="@string/title_activity_modal_drawer_layout"
-            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.ExercisejetpackCompose.NoActionBar" />
         <activity
             android:name=".ListActivity"
             android:exported="true"
