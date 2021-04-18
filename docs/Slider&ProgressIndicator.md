@@ -135,4 +135,8 @@ Column(
 
 ```
 
+<<<<<<< HEAD
 > LinearProgressIndicator與CircularProgressIndicator中可以不指定progress值，則會一直運行轉態呈現。(撰寫文件當下CircularProgressIndicator不指定progress會導致App Crash。)
+=======
+> LinearProgressIndicator與CircularProgressIndicator中可以不指定progress值，則會一直運行轉態呈現。
+>>>>>>> 20284c356c0730c27a8f5b29fb53845bf8a402e4
