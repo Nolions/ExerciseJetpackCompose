@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,8 +17,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -42,9 +39,9 @@ fun ItemList(size: Int, colors: List<String>) {
         val listState = rememberLazyListState()
 
         val coroutineScope = rememberCoroutineScope()
-        LazyColumn( modifier = Modifier.height(200.dp), state = listState) {
+        LazyColumn(modifier = Modifier.height(200.dp), state = listState) {
             for (i in 1..size) {
-                item() {
+                item {
                     Row {
                         Icon(imageVector = Icons.Filled.Done, contentDescription = null)
                         Text(text = "item $i")
@@ -52,7 +49,7 @@ fun ItemList(size: Int, colors: List<String>) {
                 }
             }
 
-            if (listState.firstVisibleItemIndex > 0){
+            if (listState.firstVisibleItemIndex > 0) {
                 Log.d("aaaaaa", "LazyListState: index: ${listState.firstVisibleItemIndex}")
                 Log.d("aaaaaa", "LazyListState: Offset: ${listState.firstVisibleItemScrollOffset}")
             }
