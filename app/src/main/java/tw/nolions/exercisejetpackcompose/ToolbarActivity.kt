@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -43,9 +44,14 @@ class ToolbarActivity : ComponentActivity() {
     }
 }
 
+lateinit var sliderPosition: MutableState<Float>
+
 @Composable
 fun Toolbar() {
-    Column {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         TopAppBar(
             navigationIcon = {
                 IconButton(onClick = { /*TODO*/ }) {
@@ -104,12 +110,11 @@ fun Toolbar() {
     }
 }
 
-lateinit var sliderPosition: MutableState<Float>
-
 @Composable
 fun progress() {
     sliderPosition = remember { mutableStateOf(0f) }
     LinearProgress()
+    CircularProgressIndicator()
     Slider()
 
     Text(text = sliderPosition.value.toInt().toString())
@@ -130,10 +135,10 @@ private fun Slider() {
 
 @Composable
 private fun LinearProgress() {
-    val animatedProgress = animateFloatAsState(
-        targetValue = sliderPosition.value / 10,
-        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
-    ).value
+//    val animatedProgress = animateFloatAsState(
+//        targetValue = sliderPosition.value / 10,
+//        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
+//    ).value
 
     LinearProgressIndicator(
         modifier = Modifier.padding(8.dp),
@@ -154,8 +159,10 @@ private fun LinearProgress() {
         }
 
         LinearProgressIndicator(
-            progress = animatedProgress,
+            progress = sliderPosition.value /10,
             modifier = Modifier.padding(10.dp, 20.dp),
+            color = Color.Green,
+            backgroundColor = Color.DarkGray
         )
 
         OutlinedButton(
@@ -172,7 +179,17 @@ private fun LinearProgress() {
 }
 
 @Composable
-private fun ActionMenu() {
+fun CircularProgressIndicator() {
+//    CircularProgressIndicator()
+    CircularProgressIndicator(
+        progress = sliderPosition.value/10,
+        strokeWidth = 20.dp,
+        color = Color.DarkGray,
+    )
+}
+
+@Composable
+fun ActionMenu() {
     val showMenu = remember { mutableStateOf(false) }
 
     IconButton(onClick = { showMenu.value = true }) {
