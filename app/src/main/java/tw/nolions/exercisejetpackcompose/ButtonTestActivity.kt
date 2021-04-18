@@ -2,21 +2,25 @@ package tw.nolions.exercisejetpackcompose
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
@@ -37,11 +41,14 @@ class ButtonTestActivity : ComponentActivity() {
     }
 }
 
+lateinit var openDialog: MutableState<Boolean>
+
 @Composable
 fun Button() {
     val iconBtnModifier = Modifier.width(90.dp)
     val text = remember { mutableStateOf("") }
     val context = LocalContext.current
+    openDialog = remember { mutableStateOf(false)  }
 
     Column(
         modifier = Modifier
@@ -124,7 +131,7 @@ fun Button() {
             ExtendedFloatingActionButton(
                 icon = { Icon(Icons.Filled.Favorite, "") },
                 text = { Text("Clear") },
-                onClick = { /*do something*/ },
+                onClick = { openDialog.value = true },
                 backgroundColor = Color.Blue,
                 contentColor = Color.White,
                 shape = MaterialTheme.shapes.large,
@@ -177,6 +184,36 @@ fun Button() {
         RadioButtonDemo()
 
         CheckBoxDemo()
+
+        Dialog()
+    }
+}
+
+@Composable
+fun Dialog() {
+    if (openDialog.value) {
+        AlertDialog(
+            onDismissRequest = { openDialog.value = false },
+            text = {  Text(text = "Dialog Content") },
+            title = {
+                Text(text = "Dialog Title")
+            },
+            shape = RoundedCornerShape(20.dp),
+            confirmButton = {
+                Button(
+                    onClick = { openDialog.value = false }
+                ) {
+                    Text("OK")
+                }
+            },
+            dismissButton = {
+                Button(
+                    onClick = { openDialog.value = false }
+                ) {
+                    Text("Cancel")
+                }
+            }
+        )
     }
 }
 
